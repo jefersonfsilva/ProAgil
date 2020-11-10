@@ -27,9 +27,9 @@ namespace ProAgil.WebAPI.Controllers
 
                 return Ok(results);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco de dados falhou {ex.Message}");
             }
         }
 
@@ -42,9 +42,9 @@ namespace ProAgil.WebAPI.Controllers
 
                 return Ok(results);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco de dados falhou {ex.Message}");
             }
         }
 
@@ -60,9 +60,9 @@ namespace ProAgil.WebAPI.Controllers
                     return Created($"/api/palestrante/{model.Id}", model);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco de dados falhou {ex.Message}");
             }
 
             return BadRequest();
@@ -83,9 +83,9 @@ namespace ProAgil.WebAPI.Controllers
                     return Created($"/api/palestrante/{model.Id}", model);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco de dados falhou {ex.Message}");
             }
 
             return BadRequest();
@@ -106,9 +106,9 @@ namespace ProAgil.WebAPI.Controllers
                     return Ok();
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Banco de dados falhou {ex.Message}");
             }
 
             return BadRequest();
