@@ -56,6 +56,7 @@ export class EventosComponent implements OnInit {
     this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this._filtroLista) : this.eventos;
   }
 
+  // tslint:disable-next-line: typedef
   editarEvento(evento: Evento, template: any) {
     this.modoSalvar = 'put';
     this.openModal(template);
@@ -65,17 +66,21 @@ export class EventosComponent implements OnInit {
     this.registerForm.patchValue(this.evento);
   }
 
+  // tslint:disable-next-line: typedef
+  // tslint:disable-next-line: typedef
   novoEvento(template: any) {
     this.modoSalvar = 'post';
     this.openModal(template);
   }
 
+  // tslint:disable-next-line: typedef
   excluirEvento(evento: Evento, template: any) {
     this.openModal(template);
     this.evento = evento;
     this.bodyDeletarEvento = `Tem certeza que deseja excluir o evento: ${evento.tema}, código: ${evento.id} ?`;
   }
 
+  // tslint:disable-next-line: typedef
   confirmeDelete(template: any) {
     this.eventoService.deleteEvento(this.evento.id).subscribe(
       () => {
@@ -89,16 +94,19 @@ export class EventosComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line: typedef
   openModal(template: any) {
     this.registerForm.reset();
     template.show();
   }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.validation();
     this.getEventos();
   }
 
+  // tslint:disable-next-line: typedef
   filtrarEventos(filtrarPor: string): Evento[] {
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.eventos.filter(
@@ -106,10 +114,12 @@ export class EventosComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line: typedef
   alternarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
   }
 
+  // tslint:disable-next-line: typedef
   validation() {
     this.registerForm = this.fb.group({
       tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
@@ -123,6 +133,7 @@ export class EventosComponent implements OnInit {
   }
 
 
+  // tslint:disable-next-line: typedef
   onFileChange(event) {
     const reader = new FileReader();
 
@@ -132,6 +143,7 @@ export class EventosComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line: typedef
   uploadImagem() {
     if (this.modoSalvar === 'post') {
       const nomeArquivo = this.evento.imagemURL.split('\\', 3);
@@ -154,6 +166,7 @@ export class EventosComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line: typedef
   salvarAlteracao(template: any) {
     if (this.registerForm.valid) {
       if (this.modoSalvar === 'post') {
@@ -189,7 +202,9 @@ export class EventosComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line: typedef
   getEventos() {
+    this.dataAtual = new Date().getMilliseconds().toString();
     this.eventoService.getAllEvento().subscribe(
     (_eventos: Evento[]) => {
        this.eventos = _eventos;
