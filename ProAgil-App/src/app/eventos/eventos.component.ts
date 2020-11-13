@@ -18,12 +18,11 @@ defineLocale('pt-br', ptBrLocale);
 export class EventosComponent implements OnInit {
 
   titulo = 'Eventos';
-
+  dataEvento: string;
   eventosFiltrados: Evento[];
   eventos: Evento[];
   evento: Evento;
   modoSalvar = 'post';
-  dataEvento: string;
   imagemLargura = 50;
   imagemMargem = 2;
   mostrarImagem = false;
@@ -66,7 +65,6 @@ export class EventosComponent implements OnInit {
     this.registerForm.patchValue(this.evento);
   }
 
-  // tslint:disable-next-line: typedef
   // tslint:disable-next-line: typedef
   novoEvento(template: any) {
     this.modoSalvar = 'post';
@@ -176,7 +174,6 @@ export class EventosComponent implements OnInit {
 
         this.eventoService.postEvento(this.evento).subscribe(
           (novoEvento: Evento) => {
-            console.log(novoEvento);
             template.hide();
             this.getEventos();
             this.toastr.success('Inserido com sucesso!');

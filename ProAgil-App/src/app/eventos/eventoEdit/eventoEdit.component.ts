@@ -19,7 +19,7 @@ export class EventoEditComponent implements OnInit {
   registerForm: FormGroup;
   file: File;
   fileNameToUpdate: string;
-  dataAtual;
+  dataAtual = '';
 
   get lotes(): FormArray {
     return <FormArray>this.registerForm.get('lotes');
@@ -125,12 +125,12 @@ export class EventoEditComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  onFileChange(file: FileList) {
+  onFileChange(evento: any, file: FileList) {
     const reader = new FileReader();
 
     reader.onload = (event: any) => this.imagemURL = event.target.result;
 
-    //this.file = event.target.files;
+    this.file = evento.target.files;
     reader.readAsDataURL(file[0]);
   }
   // tslint:disable-next-line: typedef
